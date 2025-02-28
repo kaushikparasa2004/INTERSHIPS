@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone</title>
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Spotify</h2>
+        <ul>
+            <li>Home</li>
+            <li>Search</li>
+            <li>Your Library</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Home</h1>
+        <input type="text" placeholder="Search for songs, artists, albums..." class="search-bar">
+        <h2>Trending Music</h2>
+        <div class="playlist">
+            <div class="song"><img src="album1.jpg" alt="Album 1"><p>Trending Song 1</p></div>
+            <div class="song"><img src="album2.jpg" alt="Album 2"><p>Trending Song 2</p></div>
+            <div class="song"><img src="album3.jpg" alt="Album 3"><p>Trending Song 3</p></div>
+        </div>
+        <h2>Recommended for You</h2>
+        <div class="playlist">
+            <div class="song"><img src="album4.jpg" alt="Album 4"><p>Recommended Song 1</p></div>
+            <div class="song"><img src="album5.jpg" alt="Album 5"><p>Recommended Song 2</p></div>
+            <div class="song"><img src="album6.jpg" alt="Album 6"><p>Recommended Song 3</p></div>
+        </div>
+        <h2>Your Playlists</h2>
+        <div class="playlist">
+            <div class="song"><img src="playlist1.jpg" alt="Playlist 1"><p>My Playlist 1</p></div>
+            <div class="song"><img src="playlist2.jpg" alt="Playlist 2"><p>My Playlist 2</p></div>
+            <div class="song"><img src="playlist3.jpg" alt="Playlist 3"><p>My Playlist 3</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- Music Player -->
+<div class="music-player">
+    <p>Now Playing: <span class="now-playing">Song Name</span></p>
+    <div class="controls">
+        <button>Prev</button>
+        <button>Play/Pause</button>
+        <button>Next</button>
+        <input type="range" class="volume-control">
+    </div>
+</div>
+</body>
+</html>

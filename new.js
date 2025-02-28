@@ -1,17 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaSearch } from "react-icons/fa";
+import { FaPlay, FaPause, FaStepForward, FaStepBackward, FaSearch, FaVolumeUp } from "react-icons/fa";
 
 export default function MusicPlayerApp() {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [songs, setSongs] = useState([]);
-
-    useEffect(() => {
-        fetch("https://api.example.com/trending-songs") // Replace with actual API URL
-            .then(response => response.json())
-            .then(data => setSongs(data.songs))
-            .catch(error => console.error("Error fetching songs:", error));
-    }, []);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [volume, setVolume] = useState(50);
+    const songs = [
+        { title: "Song One", artist: "Artist A" },
+        { title: "Song Two", artist: "Artist B" },
+        { title: "Song Three", artist: "Artist C" },
+    ];
 
     const togglePlay = () => {
         setIsPlaying(!isPlaying);
@@ -27,6 +26,8 @@ export default function MusicPlayerApp() {
                         type="text"
                         placeholder="Search..."
                         className="p-2 rounded-lg bg-gray-800 text-white pl-10"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
                     <FaSearch className="absolute left-3 top-3 text-gray-400" />
                 </div>
@@ -37,15 +38,11 @@ export default function MusicPlayerApp() {
                 <div className="col-span-2">
                     <h2 className="text-xl font-semibold mb-3">Trending Songs</h2>
                     <div className="bg-gray-800 p-4 rounded-lg">
-                        {songs.length > 0 ? (
-                            <ul>
-                                {songs.map((song, index) => (
-                                    <li key={index} className="p-2 border-b border-gray-700">{song.title} - {song.artist}</li>
-                                ))}
-                            </ul>
-                        ) : (
-                            <p>Loading songs...</p>
-                        )}
+                        <ul>
+                            {songs.map((song, index) => (
+                                <li key={index} className="p-2 border-b border-gray-700">{song.title} - {song.artist}</li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
                 <div>
@@ -65,6 +62,15 @@ export default function MusicPlayerApp() {
                 </button>
                 <button className="p-2"><FaStepBackward /></button>
                 <button className="p-2"><FaStepForward /></button>
+                <input
+                    type="range"
+                    min="0"
+                    max="100"
+                    value={volume}
+                    onChange={(e) => setVolume(e.target.value)}
+                    className="ml-4"
+                />
+                <FaVolumeUp className="ml-2" />
             </motion.div>
         </div>
     );
